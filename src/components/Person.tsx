@@ -6,7 +6,8 @@ interface IPersonProps {
 interface IPersonState {
     firstName: string,
     lastName: string,
-    age: number
+    age: number,
+    liked: boolean
 }
 
 export default class Person extends React.Component<IPersonProps, IPersonState> {
@@ -15,7 +16,8 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
         this.state = {
             firstName: "John",
             lastName: "Smith",
-            age: 45
+            age: 45,
+            liked: false
         }
     }
     updatePerson = ( event: any ) => {
@@ -47,7 +49,16 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
         this.setState( {
             firstName: firstNameString,
             lastName: lastNameString,
-            age: ageNum
+            age: ageNum,
+            liked: this.state.liked
+        } );
+    }
+    toggleLike = () => {
+        this.setState( {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            age: this.state.age,
+            liked: !this.state.liked // Switch boolean to the opposite (!)
         } );
     }
     render () {
@@ -65,6 +76,9 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
                     <input type="number" name="age" defaultValue={this.state.age} />
                     <input type="submit" value="Apply Updates" />
                 </form>
+                <button onClick={this.toggleLike}>
+                    👍 Like this Person?
+                </button>
             </div>
         );
     }
