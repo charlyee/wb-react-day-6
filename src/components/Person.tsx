@@ -11,8 +11,10 @@ export default class Person extends React.Component {
     }
     render () {
         return (
-            <h2>{this.state.firstName} {this.state.lastName}</h2>
-            <p>They are {this.state.age} years old.</p>
+            <div>
+                <h2>{this.state.firstName} {this.state.lastName}</h2>
+                <p>They are {this.state.age} years old.</p>
+            </div>
         );
     }
 }
