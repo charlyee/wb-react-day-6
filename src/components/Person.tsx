@@ -61,7 +61,7 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
             liked: !this.state.liked // Switch boolean to the opposite (!)
         } );
     }
-    render () {
+    liked = () => {
         return (
             <div>
                 <h2>{this.state.firstName} {this.state.lastName}</h2>
@@ -77,9 +77,38 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
                     <input type="submit" value="Apply Updates" />
                 </form>
                 <button onClick={this.toggleLike}>
-                    👍 Like this Person?
+                    👍 You Like Them!
+                    (Click to Unlike)
                 </button>
             </div>
         );
+    }
+    unLiked = () => {
+        return (
+            <div>
+                <h2>{this.state.firstName} {this.state.lastName}</h2>
+                <p>They are {this.state.age} years old.</p>
+                <form onSubmit={this.updatePerson}>
+                    <h3>Update Person</h3>
+                    <label htmlFor="first-name">First Name:</label>
+                    <input type="text" name="first-name" defaultValue={this.state.firstName} />
+                    <label htmlFor="last-name">Last Name:</label>
+                    <input type="text" name="last-name" defaultValue={this.state.lastName} />
+                    <label htmlFor="age">Age:</label>
+                    <input type="number" name="age" defaultValue={this.state.age} />
+                    <input type="submit" value="Apply Updates" />
+                </form>
+                <button onClick={this.toggleLike}>
+                    👎 Like this Person?
+                    (Click to Like)
+                </button>
+            </div>
+        );
+    }
+    render () {
+        if ( this.state.liked )
+            return this.liked();
+        else
+            return this.unLiked();
     }
 }
