@@ -18,7 +18,6 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
             age: 45
         }
     }
-    /*
     updatePerson = ( event: any ) => {
         event.preventDefault();
 
@@ -50,40 +49,38 @@ export default class Person extends React.Component<IPersonProps, IPersonState> 
             lastName: lastNameString,
             age: ageNum
         } );
-    }*/
-    updatePersonInfo ( event: any ) {
-        return (self: any): void => {
-            let updatedFirstName = self.state.firstName;
-            let updatedLastName = self.state.lastName;
-            let updatedAge = self.state.age;
-            if ( event.target.name === 'first-name' ) {
-                updatedFirstName = event.target.value;
-            } else if ( event.target.name === 'last-name' ) {
-                updatedLastName = event.target.value;
-            } else if ( event.target.name === 'age' ) {
-                updatedAge = Number( event.target.value );
-            }
-            self.setState( {
-                firstName: updatedFirstName,
-                lastName: updatedLastName,
-                age: updatedAge
-            } );
+    }
+    updatePersonInfo = ( event: any ) => {
+        let updatedFirstName = this.state.firstName;
+        let updatedLastName = this.state.lastName;
+        let updatedAge = this.state.age;
+        if ( event.target.name === 'first-name' ) {
+            updatedFirstName = event.target.value;
+        } else if ( event.target.name === 'last-name' ) {
+            updatedLastName = event.target.value;
+        } else if ( event.target.name === 'age' ) {
+            updatedAge = Number( event.target.value );
         }
-        
+        this.setState( {
+            firstName: updatedFirstName,
+            lastName: updatedLastName,
+            age: updatedAge
+        } );
     }
     render () {
         return (
             <div>
                 <h2>{this.state.firstName} {this.state.lastName}</h2>
                 <p>They are {this.state.age} years old.</p>
-                <form>{/*onSubmit={this.updatePerson}*/}
+                <form onSubmit={this.updatePerson}>
                     <h3>Update Person</h3>
                     <label htmlFor="first-name">First Name:</label>
-                    <input type="text" name="first-name" value={this.state.firstName} onChange={(this.updatePersonInfo)(this)} />
+                    <input type="text" name="first-name" defaultValue={this.state.firstName} />
                     <label htmlFor="last-name">Last Name:</label>
-                    <input type="text" name="last-name" value={this.state.lastName} onChange={(this.updatePersonInfo)(this)} />
+                    <input type="text" name="last-name" defaultValue={this.state.lastName} />
                     <label htmlFor="age">Age:</label>
-                    <input type="number" name="age" value={this.state.age} onChange={(this.updatePersonInfo)(this)} />
+                    <input type="number" name="age" defaultValue={this.state.age} />
+                    <input type="submit"/>
                 </form>
             </div>
         );
