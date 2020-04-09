@@ -1,7 +1,7 @@
 import React from 'react';
 
-class Person extends React.Component {
-    constructor ( props ) {
+export default class Person extends React.Component {
+    constructor ( props: any ) {
         super( props );
         this.state = {
             firstName: "John",
