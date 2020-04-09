@@ -1,9 +1,9 @@
 import React from 'react';
 
-export interface IPersonProps {
+interface IPersonProps {
 }
 
-export interface IPersonState {
+interface IPersonState {
     firstName: string,
     lastName: string,
     age: number
