@@ -1,7 +1,16 @@
 import React from 'react';
 
-export default class Person extends React.Component {
-    constructor ( props: any ) {
+export interface IPersonProps {
+}
+
+export interface IPersonState {
+    firstName: string,
+    lastName: string,
+    age: number
+}
+
+export default class Person extends React.Component<IPersonProps, IPersonState> {
+    constructor ( props: string | number ) {
         super( props );
         this.state = {
             firstName: "John",
